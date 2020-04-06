@@ -1,0 +1,3 @@
+import netmiko
+
+dir(netmiko)

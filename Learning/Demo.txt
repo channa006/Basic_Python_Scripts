@@ -1,0 +1,20 @@
+AF|Afghanistan
+AL|Albania
+DZ|Algeria
+AS|American Samoa
+AD|Andorra
+AO|Angola
+AI|Anguilla
+AQ|Antarctica
+AG|Antigua And Barbuda
+AR|Argentina
+AM|Armenia
+AW|Aruba
+AU|Australia
+AT|Austria
+AZ|Azerbaijan
+BS|Bahamas
+BH|Bahrain
+BD|Bangladesh
+BB|Barbados
+
