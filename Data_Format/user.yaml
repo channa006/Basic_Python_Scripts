@@ -1,0 +1,16 @@
+id: 3423
+first_name: 'Ray'
+last_name: 'Smith'
+birth_date: 1989-08-15
+address:
+  - street: '94873 Leadger Rue'
+    city: 'Royal Oak'
+    postal_code: 44663
+    state: 'OH'
+    primary: 1
+  - street: '832 Willian Ave'
+    city: 'Elnaville'
+    postal_code: '17319'
+    state: 'EL'
+    primary: 0
+score: 18.3
