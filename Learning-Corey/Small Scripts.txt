@@ -1,0 +1,352 @@
+
+#This small python script is to check if device is reachale and to enter trhe CLI "who"
+
+import paramiko
+import time
+
+time.sleep(1)
+
+
+ip = "10.236.253.63"
+host = ip
+username = "e5577833"
+password = "91358937"
+
+remote = paramiko.SSHClient()
+
+remote.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+remote.connect(ip, username = username, password = password, look_for_keys = False, allow_agent = False)
+print "SSH Connection established to " + host
+
+
+remote1 = remote.invoke_shell()
+print "Interactive session has been established"
+
+output = remote1.recv(1000)
+
+print output
+
+remote1.send("\n")
+
+time.sleep(4)
+
+remote1.send("who\n")
+
+time.sleep(4)
+
+
+output = remote1.recv(5000)
+
+print output
+
+with open("onetest.txt", "w") as one:
+
+    one.write(output)
+
+
+
+
+
+*********************************************************************************************************
+
+Below Python Script is to read the data from excel sheet and to do the operations on networking devices
+
+
+
+import os
+
+import xlrd
+
+import itertools
+
+import csv
+
+import xlsxwriter
+
+import paramiko
+
+
+
+book = xlrd.open_workbook("FW_form.xlsx") #Pick a excel sheet to work on
+
+sheet = book.sheet_by_name("Rules") #Choose the workbook from excel sheet
+
+
+
+all_data = [] #empty list to append all entries from the sheet
+
+
+
+for i in range(sheet.ncols):
+
+    all_data.append(sheet.col_values(i))
+
+
+
+#TO GET SOURCE IP ADDRESSES
+
+source_ip_list_with_unicode = all_data[1]
+
+#Here we will remove unicodes from the source_ip_list
+
+source_ip_list_without_unicode = [str(i) for i in source_ip_list_with_unicode]
+
+
+
+source_ip_only = []
+
+for i in source_ip_list_without_unicode:
+
+    if len(i) > 1:
+
+        source_ip_only.append(i)
+
+source_IPs = source_ip_only[1::] #Our target source IPs list
+
+
+
+#TO GET DESTINATION IP ADDRESSES
+
+dest_ip_list_with_unicode = all_data[3]
+
+#Here we will remove unicodes from dest_ip_list
+
+dest_ip_list_without_unicode = [str(i) for i in dest_ip_list_with_unicode]
+
+
+
+dest_ip_only = []
+
+for i in dest_ip_list_without_unicode:
+
+    if len(i) > 1:
+
+        dest_ip_only.append(i)
+
+dest_IPs = dest_ip_only[1::]
+
+
+
+#TO GET PROTOCOL/PORT TYPE
+
+port_list_with_unicode = all_data[5]
+
+port_list_without_unicode = [str(i) for i in port_list_with_unicode]
+
+only_ports = []
+
+for i in port_list_without_unicode:
+
+    if len(i) > 1:
+
+        only_ports.append(i)
+
+ports = only_ports[1::]
+
+print source_IPs
+
+print dest_IPs
+
+print ports
+
+
+
+
+
+#Above gathered data from FW form we will use below to login and execute the commands.
+
+
+
+pd = "53546901"
+
+output = str()
+
+uname = str()
+
+pwd = str()
+
+
+
+"""
+
+Optional Part to avoid cryptographic warnings..!!
+
+def fxn():
+
+    warnings.warn("deprecated", DeprecationWarning)
+
+with warnings.catch_warnings():
+
+    warnings.simplefilter("ignore")
+
+    fxn()
+
+"""
+
+
+
+class Ssh:
+
+    def __init__(self, host, uname, pwd, look_for_keys = False):
+
+        self.ssh = paramiko.SSHClient()
+
+        self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+        try:
+
+            self.ssh.connect("10.236.253.63", username = "e5577833", password = pd)
+
+            print "Connecting to JumpServer...Please wait..!!"
+
+            print "\n" * 5
+
+
+
+       except:
+
+            print "Not able to connect, please check if Authentication issue is there..!!"
+
+        else:
+
+            self.remote = self.ssh.invoke_shell()
+
+    def send_cmd(self):
+
+        while True:
+
+            if self.remote.recv_ready():
+
+               print "channel is ready to receive"
+
+                global output
+
+                output += self.remote.recv(9999999)
+
+                print output
+
+
+
+            else:
+
+                continue
+
+            with open("output.txt", "w") as op:
+
+                op.write(output)
+
+                op.close()
+
+            if output.endswith("$ "):
+
+                self.remote.send("ssh -l e5577833 ")
+
+                uname = raw_input("Enter the Hostname of FW:- ")
+
+                self.remote.send(uname)
+
+                self.remote.send("\n")
+
+            elif output.endswith("Password: "):
+
+                pwd = raw_input("Enter the password:- ")
+
+                self.remote.send(pwd)
+
+                self.remote.send("\n")
+
+            elif output.endswith("> "):
+
+                self.remote.send("set cli screen-length 200\n")
+
+                cmd1 = raw_input("Enter the command:- ")
+
+                self.remote.send(cmd1)
+
+                self.remote.send("\n")
+
+k = Ssh("10.236.253.63", "e5577833", pd)
+
+
+
+k.send_cmd()
+
+
+
+
+
+
+
+Below Script is for OOPS in Python
+
+
+
+
+
+class Pets:
+
+    dogs = []
+
+    def __init__(self, dogs):
+
+        self.dogs = dogs
+
+    def walk(self):
+
+        for dog in self.dogs:
+
+            print(dog.walk())
+
+class Dog:
+
+    species = "Mammel"
+
+    is_hungry = True
+
+    def __init__(self, name, age):
+
+        self.name = name
+
+        self.age = age
+
+    def description(self):
+
+        return "{} is {}".format(self.name, self.age)
+
+    def speak(self, sound):
+
+        return "{} sounds {}".format(self.name, sound)
+
+    def eat(self):
+
+        self.is_hungry = False
+
+    def walk(self):
+
+        return "{} is walking".format(self.name)
+
+class Bulldog(Dog):
+
+    def run(self, speed):
+
+        return "{} runs {}".format(self.name, speed)
+
+class Russel(Dog):
+
+    def run(self, speed):
+
+        return "{} runs {}".format(self.name, speed)
+
+my_dogs = [
+
+    Bulldog("Tom", 7),
+
+    Russel("FLetcher", 9),
+
+    Dog("Larry", 9)
+
+    ]
+
+my_pets = Pets(my_dogs)
+
+my_pets.walk()
