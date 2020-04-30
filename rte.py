@@ -1,3 +1,0 @@
-import netmiko
-
-dir(netmiko)
