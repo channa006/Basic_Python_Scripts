@@ -1,5 +1,5 @@
 # File Objects
-
+import os
 # f = open('Demo.txt', 'r')
 # print(f.name)
 # print(f.mode)
@@ -9,9 +9,10 @@
 
 # File Context Manager
 
-# with open('Demo.txt', 'r') as f:
-#    f_contents = f.read()
-#    print(f_contents)
+os.chdir('/Users/channp/Code/Basic_Python_Scripts/Learning-Corey/')
+with open('Demo.txt', 'r') as f:
+   f_contents = f.read()
+   print(f_contents)
 
 # Show all the lines readlines , single line readline
 # with open('Demo.txt', 'r') as f:
@@ -61,11 +62,11 @@
 #         for line in r:
 #             w.write(line)
 
-with open('Demo.txt', 'rb') as r:
-    with open('Demo_write.txt', 'wb') as w:
-        chunk_size = 4096
-        r_chunk = r.read(chunk_size)
+# with open('Demo.txt', 'rb') as r:
+#     with open('Demo_write.txt', 'wb') as w:
+#         chunk_size = 4096
+#         r_chunk = r.read(chunk_size)
 
-        while len(r_chunk) > 0:
-            w.write(r_chunk)
-            r_chunk = r.read(chunk_size)
+#         while len(r_chunk) > 0:
+#             w.write(r_chunk)
+#             r_chunk = r.read(chunk_size)
