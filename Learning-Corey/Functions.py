@@ -1,19 +1,23 @@
 # Functions are basically set of instructions packaged together, which performs specific task.
 
+
 # def hello_fun():
-#    print("Hello Function")
+#     print("Hello Function")
+#
+#
 # hello_fun()
 
 # Allow us to put the code in single location with sole purpose.
 # DRY - Don't Repeat Yourself
 # Machine , Take the input and Produce the output
 # Python Scope - In Detail - Future , Want to know the scope of variables etc
-
 # Passing an Argument
 
-# def hello_fun(greeting):
-#    return '{} Function'.format(greeting)
-# print(hello_fun('Hello'))
+def hello_fun(greeting):
+    return '{} Function'.format(greeting)
+
+
+print(hello_fun('Hello'))
 
 # Passing multiple Argument
 
@@ -50,12 +54,12 @@
 
 # Unpack and send the values using * and **
 
-def student_info(*args, **kwargs):
-    print(args)
-    print(kwargs)
-
-
-course = ['Maths', 'Sciene', 'Social']
-student = {'age': '24', 'name': 'Yasmine'}
-
-student_info(*course, **student)
+# def student_info(*args, **kwargs):
+#     print(args)
+#     print(kwargs)
+#
+#
+# course = ['Maths', 'Sciene', 'Social']
+# student = {'age': '24', 'name': 'Yasmine'}
+#
+# student_info(*course, **student)
