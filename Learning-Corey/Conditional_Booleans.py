@@ -1,4 +1,4 @@
-#IF Else and Elif Statements
+# IF Else and Elif Statements
 
 # Comparisons:
 # Equal:            ==
@@ -10,32 +10,30 @@
 # Object Identity:  is
 
 
-#and
-#or
-#not
+# and
+# or
+# not
 
 
 # False Values:
-    # False
-    # None
-    # Zero of any numeric type
-    # Any empty sequence. For example, '', (), [].
-    # Any empty mapping. For example, {}.
+# False
+# None
+# Zero of any numeric type
+# Any empty sequence. For example, '', (), [].
+# Any empty mapping. For example, {}.
 
-#condition = False
-#if condition:
+# condition = False
+# if condition:
 #    print('Evaluated to True')
-#else:
+# else:
 #    print('Evaluated to False')
 
 
 language = 'java'
 
 if language == 'python':
-    print ("language is Pyhton")
+    print("language is Pyhton")
 elif language == 'java':
-    print ("language is java")
+    print("language is java")
 else:
-    print ("No Match - Git Check")
-
-
+    print("No Match - Git Check")
