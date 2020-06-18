@@ -3,7 +3,7 @@ student = {'Name': 'John', 'Age': '18', 'courses': ['Maths', 'Social'], 'Phone':
 # print(student)
 
 # Print only the value for key
-# print(student['name'])
+print(student['Name'])
 
 # Alternate using method
 # print(student.get('courses'))
@@ -18,8 +18,8 @@ student = {'Name': 'John', 'Age': '18', 'courses': ['Maths', 'Social'], 'Phone':
 # print(student.get('hone', "Not Found"))
 
 # Update all in one shot
-student.update({'Name': 'Randy', 'Age': '28', 'Courses': ['Vedic', 'Social'], 'Phone': '555-5555'})
-print(student)
+# student.update({'Name': 'Randy', 'Age': '28', 'Courses': ['Vedic', 'Social'], 'Phone': '555-5555'})
+# print(student)
 
 # Delete Specific Key and Value
 # del student['Age']
@@ -42,5 +42,5 @@ print(student)
 #     print(key)
 
 # For Loop , Below will loop over the Key and Value
-for key, value in student.items():
-    print(key, value)
+# for key, value in student.items():
+#     print(key, value)

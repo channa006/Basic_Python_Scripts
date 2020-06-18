@@ -28,9 +28,9 @@ nums = [1, 6, 2, 7, 8, 3]
 # courses.insert(1, 'Arts')
 
 # Remove the last Item in the List. i.e Geography
-# popped = courses.pop()
-# print(popped)
-# print(courses)
+popped = courses.pop()
+print(popped)
+print(courses)
 # print(courses_new)
 
 # Merging two Lists
